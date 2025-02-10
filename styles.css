@@ -183,3 +183,19 @@ button[type="button"]:hover {
         padding: 10px;
     }
 }
+/* Estilos existentes... */
+
+/* Novo campo de valor */
+#valor {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+#valor:focus {
+    border-color: #007bff;
+    outline: none;
+}
