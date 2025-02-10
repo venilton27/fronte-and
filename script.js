@@ -4,14 +4,15 @@ function gerarRecibo() {
     let descricao = document.getElementById("descricao").value.trim();
     let data = new Date().toLocaleDateString('pt-BR');
 
+    // Validação do campo telefone
     if (cliente && telefone && descricao) {
         if (!validarTelefone(telefone)) {
-            alert("Telefone inválido! Insira um número válido.");
+            alert("Telefone inválido! O telefone deve conter exatamente 11 dígitos numéricos.");
             return;
         }
 
         document.getElementById("reciboCliente").innerText = cliente;
-        document.getElementById("reciboTelefone").innerText = telefone;
+        document.getElementById("reciboTelefone").innerText = formatarTelefone(telefone); // Formata o telefone
         document.getElementById("reciboDescricao").innerText = descricao;
         document.getElementById("reciboData").innerText = data;
 
@@ -21,7 +22,32 @@ function gerarRecibo() {
     } else {
         alert("Preencha todos os campos!");
     }
+
+
+
+$(document).ready(function() {
+    $('#telefone').inputmask('(99) 99999-9999');
+});
+
+
 }
+
+// Função para validar o telefone
+function validarTelefone(telefone) {
+    // Remove todos os caracteres não numéricos
+    const telefoneNumerico = telefone.replace(/\D/g, '');
+
+    // Verifica se o telefone tem exatamente 11 dígitos
+    return telefoneNumerico.length === 11;
+}
+
+// Função para formatar o telefone no padrão (XX) XXXXX-XXXX
+function formatarTelefone(telefone) {
+    const telefoneNumerico = telefone.replace(/\D/g, '');
+    return `(${telefoneNumerico.substring(0, 2)}) ${telefoneNumerico.substring(2, 7)}-${telefoneNumerico.substring(7)}`;
+}
+
+// Restante do código permanece o mesmo...
 
 function validarTelefone(telefone) {
     const regex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;

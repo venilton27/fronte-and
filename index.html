@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container">
-        
         <h2>Emissão de Recibo</h2>
         <form id="reciboForm">
             <label for="cliente">Nome do Cliente</label>
@@ -20,6 +19,9 @@
             
             <label for="descricao">Descrição do Serviço</label>
             <input type="text" id="descricao" placeholder="Descrição do Serviço" required>
+
+            <label for="valor">Valor do Serviço/Produto</label>
+            <input type="text" id="valor" placeholder="Valor (ex: 100,00)" required>
             
             <button type="button" onclick="gerarRecibo()">Gerar Recibo</button>
         </form>
@@ -32,6 +34,7 @@
         <p><strong>Cliente:</strong> <span id="reciboCliente"></span></p>
         <p><strong>Telefone:</strong> <span id="reciboTelefone"></span></p>
         <p><strong>Descrição:</strong> <span id="reciboDescricao"></span></p>
+        <p><strong>Valor:</strong> <span id="reciboValor"></span></p>
         <p><strong>Data:</strong> <span id="reciboData"></span></p>
         <button id="btnImprimir" onclick="imprimirRecibo()" aria-label="Imprimir Recibo">Imprimir Recibo</button>
         <button id="btnWhatsApp" onclick="enviarWhatsApp()" aria-label="Enviar via WhatsApp">Enviar via WhatsApp</button>
